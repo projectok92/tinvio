@@ -31,4 +31,4 @@ const RedButton = styled.button`
   text-align: center;
 `;
 
-export default RedButton;
+export default Button;
