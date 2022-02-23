@@ -35,6 +35,8 @@ const RedButton = styled.button`
   transition: ease;
   transition-duration: .4s;
 
+  cursor: pointer;
+
   &:hover {
     top: -5px;
   }
