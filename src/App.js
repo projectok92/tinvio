@@ -207,9 +207,10 @@ const SmallDescript = styled.p`
   }
 `;
 
-const SecondScreenSection = styled.section`
+const DemoScreenSection = styled.section`
   position: relative;
   margin: 0 auto;
+  padding-bottom: 52px;
   max-width: 1280px;
   display: flex;
   justify-content: center;
@@ -221,6 +222,45 @@ const DesctopImg = styled.img`
   height: 100%;
   max-width: 1055px;
 `;
+
+const PartnersSection = styled.section`
+  position: relative;
+  text-align: center;
+  padding: 0 0 52px;
+`;
+
+const H3 = styled.h3`
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #21272e;
+  letter-spacing: .5px;
+`;
+
+const PartnersContainer = styled.div`
+  max-width: 1128px;
+  margin: 0 auto;
+`;
+
+const PartnersLogos = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 984px;
+  padding: 0;
+  margin: 70px auto 0;
+`;
+
+const PartnersLogoItem = styled.img`
+  width: 138px;
+  height: fit-content;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+`;
+
 
 function App() {
   return (
@@ -277,12 +317,37 @@ function App() {
                </ContentContainer>
             </TopSection>
 
-            <SecondScreenSection>
+            <DemoScreenSection>
               <DesctopImg
                 src='/assets/img/desktop.png'
               />
+            </DemoScreenSection>
 
-            </SecondScreenSection>
+            <PartnersSection>
+              <H3>
+                Trusted by 1000+ partners across APAC
+              </H3>
+              <PartnersContainer>
+                <PartnersLogos>
+                  <PartnersLogoItem
+                    src='/assets/img/GoChicken.png'
+                  />
+                  <PartnersLogoItem
+                    src='/assets/img/Jollibean.png'
+                  />
+                  <PartnersLogoItem
+                    src='/assets/img/BensCookies.png'
+                  />
+                  <PartnersLogoItem
+                    src='/assets/img/SimplyWrapps.png'
+                  />
+                  <PartnersLogoItem
+                    src='/assets/img/TheItalianClub.png'
+                  />
+                </PartnersLogos>
+              </PartnersContainer>
+            </PartnersSection>
+
 
           </Main>
 

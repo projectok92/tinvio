@@ -11,6 +11,11 @@ const GlobalStyle = createGlobalStyle`
     --white: #ffffff;
   }
 
+  body {
+    font-family: Manrope3,sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
   @font-face {
     font-family: 'Apple Color Emoji';
     font-weight: 400;
