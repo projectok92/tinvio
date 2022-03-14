@@ -47,6 +47,7 @@ const Header = styled.div`
 const Logo = styled.img`
   width: 120px;
   height: 48px;
+  margin-top: 6px;
   margin-right: 14px;
   margin-left: 65px;
   object-fit: contain;
@@ -71,13 +72,13 @@ const NavUl = styled.ul`
 
 const NavLi = styled.li`
   display: flex;
-  margin-right: 24px;
+  margin-right: 29px;
 `;
 
 const NavA = styled.a`
   font-family: Manrope3;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -107,6 +108,10 @@ const ButtonGetStarted = styled.button`
   border-radius: 6px;
   border: solid 1px rgba(144, 149, 153, 0.35);
   background-color: rgba(255, 255, 255, 0);
+
+  font-family: Manrope3;
+  font-size: 11px;
+  font-weight: 500;
 
   transition: ease;
   transition-duration: .4s;
@@ -178,7 +183,7 @@ const H2 = styled.h2`
 
 const H1 = styled.h1`
   margin-top: 16px;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   font-family: Manrope3;
   font-size: 40px;
   font-weight: 700;
@@ -191,7 +196,7 @@ const H1 = styled.h1`
 `;
 
 const SmallDescript = styled.p`
-  margin-top: 16px;
+  margin-top: 18px;
   font-family: Manrope3;
   font-size: 12px;
   font-weight: 500;
@@ -210,7 +215,7 @@ const SmallDescript = styled.p`
 const DemoScreenSection = styled.section`
   position: relative;
   margin: 0 auto;
-  padding-bottom: 52px;
+  padding-bottom: 67px;
   max-width: 1280px;
   display: flex;
   justify-content: center;
@@ -218,7 +223,7 @@ const DemoScreenSection = styled.section`
 
 const DesctopImg = styled.img`
   position: relative;
-  margin-top: -175px;
+  margin-top: -180px;
   height: 100%;
   max-width: 1055px;
 `;
@@ -235,7 +240,6 @@ const H3 = styled.h3`
   font-weight: 700;
   line-height: 1.1;
   color: #21272e;
-  letter-spacing: .5px;
 `;
 
 const PartnersContainer = styled.div`
@@ -252,13 +256,64 @@ const PartnersLogos = styled.div`
   margin: 70px auto 0;
 `;
 
+// const div = styled.div`
+//   width: 138px;
+//   height: 91px;
+// `;
+
 const PartnersLogoItem = styled.img`
   width: 138px;
-  height: fit-content;
+  height: 86px;
+  max-width: fit-content;
+  max-height: fit-content;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
   pointer-events: none;
+`;
+
+const SliderSection = styled.section`
+  padding: 60px 0 74px;
+  overflow-x: hidden;
+  position: relative;
+`;
+
+const SliderSectionContainer = styled.div`
+  max-width: 1128px;
+  margin: 0 auto;
+`;
+
+const SliderSectionContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 600px;
+`;
+
+const SliderSectionText = styled.div`
+  width: 33%;
+  align-self: flex-start;
+  margin-top: 96px;
+`;
+
+const SliderTitle = styled.h3`
+  width: 75%;
+  line-height: 42px;
+  letter-spacing: .7px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #21272e;
+
+`;
+
+const SliderText = styled.p`
+  padding: 27px 0 80px;
+  letter-spacing: .2px;
+  font-size: 18px;
+  line-height: 1.67;
+  font-weight: 600;
+  font-style: normal;
+  color: #787c80;
 `;
 
 
@@ -329,24 +384,42 @@ function App() {
               </H3>
               <PartnersContainer>
                 <PartnersLogos>
-                  <PartnersLogoItem
-                    src='/assets/img/GoChicken.png'
-                  />
-                  <PartnersLogoItem
-                    src='/assets/img/Jollibean.png'
-                  />
-                  <PartnersLogoItem
-                    src='/assets/img/BensCookies.png'
-                  />
-                  <PartnersLogoItem
-                    src='/assets/img/SimplyWrapps.png'
-                  />
-                  <PartnersLogoItem
-                    src='/assets/img/TheItalianClub.png'
-                  />
+                  <div>
+                    <PartnersLogoItem src='/assets/img/GoChicken2.png' />
+                  </div>
+                  <div>
+                    <PartnersLogoItem src='/assets/img/Jollibean.png' />
+                  </div>
+                  <div>
+                    <PartnersLogoItem src='/assets/img/BensCookies.png' />
+                  </div>
+                  <div>
+                    <PartnersLogoItem src='/assets/img/SimplyWrapps.png' />
+                  </div>
+                  <div>
+                    <PartnersLogoItem src='/assets/img/TheItalianClub.png' />
+                  </div>
                 </PartnersLogos>
               </PartnersContainer>
             </PartnersSection>
+            <SliderSection>
+              <SliderSectionContainer>
+                <SliderSectionContent>
+                  <SliderSectionText>
+                    <SliderTitle>
+                      All your orders in one place
+                    </SliderTitle>
+                    <SliderText>
+                      Say no more to chunky emails and messy WhatsApp messages. Receive and manage your orders in one platform
+                    </SliderText>
+
+                  </SliderSectionText>
+
+                </SliderSectionContent>
+
+              </SliderSectionContainer>
+
+            </SliderSection>
 
 
           </Main>
