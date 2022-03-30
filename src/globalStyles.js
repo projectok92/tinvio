@@ -58,6 +58,74 @@ const GlobalStyle = createGlobalStyle`
          url('/assets/fonts/Manrope-ExtraBold.woff2') format('woff2');
   }
 
+  .slider-img-1 {
+    position: relative;
+    width: 109%;
+    height: 109%;
+    object-fit: contain;
+    top: 26px;
+    left: -13px;
+  }
+  .slider-img-3 {
+    position: relative;
+    width: 96%;
+    height: 96%;
+    object-fit: contain;
+    top: 12px;
+    left: 45px;
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+  width: 49px;
+  height: 49px;
+  border: 1px solid #dae1e8;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: all .3s;
+
+  &:hover {
+    background-color: #f0f1f2;
+    transition: all .3s;
+  }
+
+  .swiper-pagination {
+    width: 187px;
+    margin: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transform: translateZ(0);
+    z-index: 10;
+  }
+
+  .swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer;
+  }
+
+  .swiper-pagination-bullet {
+    display: inline-block;
+    border-radius: 100%;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(33,39,46,.65);
+    background: #000;
+    opacity: .2;
+
+    &:active {
+      opacity: 1;
+      background: var(--swiper-theme-color);
+      background: var(--swiper-pagination-color,var(--swiper-theme-color));
+    }
+  }
+
+
 `;
+
  
 export default GlobalStyle;

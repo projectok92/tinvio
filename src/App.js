@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import GlobalStyle from './globalStyles';
 import Button from './components/Button';
@@ -231,7 +238,7 @@ const DesctopImg = styled.img`
 const PartnersSection = styled.section`
   position: relative;
   text-align: center;
-  padding: 0 0 52px;
+  padding: 0 0 100px;
 `;
 
 const H3 = styled.h3`
@@ -255,11 +262,6 @@ const PartnersLogos = styled.div`
   padding: 0;
   margin: 70px auto 0;
 `;
-
-// const div = styled.div`
-//   width: 138px;
-//   height: 91px;
-// `;
 
 const PartnersLogoItem = styled.img`
   width: 138px;
@@ -290,16 +292,19 @@ const SliderSectionContent = styled.div`
   height: 600px;
 `;
 
-const SliderSectionText = styled.div`
+const TextSliderBox = styled.div`
   width: 33%;
   align-self: flex-start;
   margin-top: 96px;
 `;
 
+const SliderSectionText = styled.div`
+
+`;
+
 const SliderTitle = styled.h3`
   width: 75%;
   line-height: 42px;
-  letter-spacing: .7px;
   font-size: 32px;
   font-weight: 700;
   color: #21272e;
@@ -308,7 +313,7 @@ const SliderTitle = styled.h3`
 
 const SliderText = styled.p`
   padding: 27px 0 80px;
-  letter-spacing: .2px;
+  letter-spacing: 0.1px;
   font-size: 18px;
   line-height: 1.67;
   font-weight: 600;
@@ -316,8 +321,29 @@ const SliderText = styled.p`
   color: #787c80;
 `;
 
+const ImageSliderBox = styled.div`
+  width: 970px;
+  height: 591px;
+  max-width: 999px;
+  border-radius: 53px;
+  background-color: #fcede8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -223px;
+  top: 13px;
+`;
+
+const SliderImg = styled.img`
+  height: 100%;
+  overflow: hidden;
+`;
+
+
 
 function App() {
+
   return (
     <>
       <GlobalStyle />
@@ -388,13 +414,13 @@ function App() {
                     <PartnersLogoItem src='/assets/img/GoChicken2.png' />
                   </div>
                   <div>
-                    <PartnersLogoItem src='/assets/img/Jollibean.png' />
+                    <PartnersLogoItem src='/assets/img/Jollibean2.png' />
                   </div>
                   <div>
-                    <PartnersLogoItem src='/assets/img/BensCookies.png' />
+                    <PartnersLogoItem src='/assets/img/BensCookies2.png' />
                   </div>
                   <div>
-                    <PartnersLogoItem src='/assets/img/SimplyWrapps.png' />
+                    <PartnersLogoItem src='/assets/img/SimplyWrapps2.png' />
                   </div>
                   <div>
                     <PartnersLogoItem src='/assets/img/TheItalianClub.png' />
@@ -405,20 +431,79 @@ function App() {
             <SliderSection>
               <SliderSectionContainer>
                 <SliderSectionContent>
-                  <SliderSectionText>
-                    <SliderTitle>
-                      All your orders in one place
-                    </SliderTitle>
-                    <SliderText>
-                      Say no more to chunky emails and messy WhatsApp messages. Receive and manage your orders in one platform
-                    </SliderText>
+                  <TextSliderBox>
+                    <Swiper
+                      modules={[Navigation, Pagination]}
+                      spaceBetween={50}
+                      slidesPerView={1}
+                      navigation
+                      pagination={{ clickable: true }}
+                      onSwiper={(swiper) => console.log(swiper)}
+                      onSlideChange={() => console.log('slide change')}
+                      rewind={true}
+                    >
+                      <SwiperSlide>
+                        <SliderSectionText>
+                          <SliderTitle>
+                            All your orders in one place
+                          </SliderTitle>
+                          <SliderText>
+                            Say no more to chunky emails and messy WhatsApp messages. Receive and manage your orders in one platform
+                          </SliderText>
+                        </SliderSectionText>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <SliderSectionText>
+                          <SliderTitle>
+                            Payment Details
+                          </SliderTitle>
+                          <SliderText>
+                            Say no more to chunky emails
+                          </SliderText>
+                        </SliderSectionText>
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <SliderSectionText>
+                          <SliderTitle>
+                            Analytics
+                          </SliderTitle>
+                          <SliderText>
+                            Some description
+                          </SliderText>
+                        </SliderSectionText>
+                      </SwiperSlide>
+                    </Swiper>
+                  </TextSliderBox>
+  
+                  <ImageSliderBox>
+                    <Swiper
+                      modules={[Navigation, Pagination]}
+                      spaceBetween={200}
+                      slidesPerView={1}
+                    >
+                      <SwiperSlide>
+                        <SliderImg
+                          className='slider-img-1'
+                          src='/assets/img/Orders.png'
+                        />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <SliderImg
+                          className='slider-img-1'
+                          src='/assets/img/OperationalCosts.png'
+                        />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <SliderImg
+                          className='slider-img-3'
+                          src='/assets/img/Analytics.png'
+                        />
+                      </SwiperSlide>
+                    </Swiper>
 
-                  </SliderSectionText>
-
+                  </ImageSliderBox>
                 </SliderSectionContent>
-
               </SliderSectionContainer>
-
             </SliderSection>
 
 
