@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide, useSwiper, useSwiperSlide } from 'swiper/react';
+import { Controller } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Keyboard, Mousewheel } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
@@ -82,7 +84,7 @@ const NavLi = styled.li`
   margin-right: 29px;
 `;
 
-const NavA = styled.a`
+const NavA = styled(NavLink)`
   font-family: Manrope3;
   font-size: 11px;
   font-weight: 500;
@@ -96,12 +98,17 @@ const NavA = styled.a`
   transition: ease;
   transition-duration: .4s;
 
+  color: ${({ isBlue }) => isBlue ? '#3897ff' : '#21272e'};
+
+
   &:hover{
     color: #3897ff;
+    transition: .4s;
   }
 
   &:active{
     color: #3897ff;
+    transition: .4s;
   }
 `;
 
@@ -276,7 +283,7 @@ const PartnersLogoItem = styled.img`
 
 const SliderSection = styled.section`
   padding: 60px 0 74px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   position: relative;
 `;
 
@@ -340,9 +347,35 @@ const SliderImg = styled.img`
   overflow: hidden;
 `;
 
+const SwiperNavigation = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const SwiperBullets = styled.div`
+  margin: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  transition: opacity .3s;
+  transform: translateZ(0);
+  z-index: 10;
+`;
+
 
 
 function App() {
+
+  SwiperCore.use([Navigation]);
+  const swiperRef = React.useRef(null);
+  const swiper = useSwiper();
+
+  const [firstSwiper, setFirstSwiper] = useState(null);
+  const [secondSwiper, setSecondSwiper] = useState(null);
+
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <>
@@ -357,20 +390,34 @@ function App() {
                 <Logo src='/assets/img/logo.png' alt='Tinvio logo' />
               </a>             
               <VerticalDevider />
-              <NavUl>
-                <NavLi>
-                  <NavA href='#' title='Home'>Home</NavA>
-                </NavLi>
-                <NavLi>
-                  <NavA href='#'title='Supplier' >Supplier</NavA>
-                </NavLi>
-                <NavLi>
-                  <NavA href='#' title='About'>About</NavA>
-                </NavLi>
-                <NavLi>
-                  <NavA href='#'title='Contact' >Contact</NavA>
-                </NavLi>
-              </NavUl>
+              <Router>
+                <NavUl>
+                  <NavLi>
+                    <NavA to="/" activeClassName="selected">
+                      Home
+                    </NavA>
+                  </NavLi>
+
+                  <NavLi>
+                    <NavA to="/supplier" activeClassName="selected">
+                      Supplier
+                    </NavA>
+
+                  </NavLi>
+                  <NavLi>
+                    <NavA to="/about" activeClassName="selected">
+                      About
+                    </NavA>                  
+                  </NavLi>
+
+                  <NavLi>
+                    <NavA to="/contact" activeClassName="selected">
+                      Contact
+                    </NavA>
+                  </NavLi>
+                </NavUl>
+              </Router>
+
             </Nav>
             <ButtonGetStarted>Get Started</ButtonGetStarted>
           </Header>
@@ -432,14 +479,20 @@ function App() {
               <SliderSectionContainer>
                 <SliderSectionContent>
                   <TextSliderBox>
+
                     <Swiper
-                      modules={[Navigation, Pagination]}
+                      className='mySwiper1'
+                      modules={[Navigation, Pagination, Keyboard, Mousewheel, Controller]}
+                      onSwiper={setFirstSwiper}
+                      controller={{ control: secondSwiper }}
                       spaceBetween={50}
                       slidesPerView={1}
                       navigation
                       pagination={{ clickable: true }}
-                      onSwiper={(swiper) => console.log(swiper)}
-                      onSlideChange={() => console.log('slide change')}
+                      keyboard={{
+                        enabled: true,
+                      }}
+                      mousewheel={true}
                       rewind={true}
                     >
                       <SwiperSlide>
@@ -473,13 +526,47 @@ function App() {
                         </SliderSectionText>
                       </SwiperSlide>
                     </Swiper>
+                    <SwiperNavigation>
+                      <button onClick={() => swiper.slidePrev()}>Slide to the previous slide</button>
+                        <Swiper
+                          pagination
+                        >
+                        </Swiper>
+                      <button onClick={() => swiper.slideNext()}>Slide to the next slide</button>
+                    </SwiperNavigation>
+
+                    
+
+
+                    {/* <div
+                      id="previousButton"
+                      className='previousSwiperButton'
+                      onClick={() => swiperRef.current.swiper.slidePrev()}
+                    >
+                      <img src='/assets/img/Chevron.svg' alt='previous'/>
+                    </div>
+                    <div
+                      className='nextSwiperButton'
+                      id="nextButton"
+                      onClick={() => swiperRef.current.swiper.slideNext()}
+                    >
+                      <img src='/assets/img/Chevron.svg' alt='next'/>
+                    </div> */}
                   </TextSliderBox>
   
                   <ImageSliderBox>
                     <Swiper
-                      modules={[Navigation, Pagination]}
+                      className='mySwiper2'
+                      modules={[Navigation, Pagination, Keyboard, Mousewheel, Controller]}
+                      onSwiper={setSecondSwiper}
+                      controller={{ control: firstSwiper }}
                       spaceBetween={200}
                       slidesPerView={1}
+                      keyboard={{
+                        enabled: true,
+                      }}
+                      mousewheel={true}
+                      rewind={true}
                     >
                       <SwiperSlide>
                         <SliderImg

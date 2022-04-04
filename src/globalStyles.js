@@ -66,6 +66,7 @@ const GlobalStyle = createGlobalStyle`
     top: 26px;
     left: -13px;
   }
+
   .slider-img-3 {
     position: relative;
     width: 96%;
@@ -75,23 +76,72 @@ const GlobalStyle = createGlobalStyle`
     left: 45px;
   }
 
-  .swiper-button-next, .swiper-button-prev {
-  width: 49px;
-  height: 49px;
-  border: 1px solid #dae1e8;
-  background-color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  outline: none;
-  transition: all .3s;
 
-  &:hover {
-    background-color: #f0f1f2;
+  .nextSwiperButton,
+  .swiper-button-next {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #dae1e8;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
     transition: all .3s;
+
+    background-image: url(/assets/img/Chevron.svg);
+    background-repeat: no-repeat;
+    background-size: 24px auto;
+    background-position: center;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      background-color: #f0f1f2;
+      transition: all .3s;
+    }
+
   }
+
+  .swiper-button-prev,
+  .previousSwiperButton {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #dae1e8;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    transition: all .3s;
+
+    background-image: url(/assets/img/Chevron.svg);
+    background-repeat: no-repeat;
+    background-size: 24px auto;
+    background-position: center;
+    transform: rotate(180deg);
+
+    &:hover {
+      background-color: #f0f1f2;
+      transition: all .3s;
+    }
+
+    &::after {
+      display: none;
+    }
+
+  }
+
+  .swiper-button-disabled {
+
+  }
+
 
   .swiper-pagination {
     width: 187px;
@@ -99,9 +149,9 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    /* position: relative; */
     transform: translateZ(0);
-    z-index: 10;
+    z-index: 2;
   }
 
   .swiper-pagination-clickable .swiper-pagination-bullet {
@@ -124,6 +174,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .active {
+    color: #3897ff;
+  }
+
+  
 
 `;
 
