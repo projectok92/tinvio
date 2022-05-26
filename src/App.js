@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 
 import GlobalStyle from './globalStyles';
 import Button from './components/Button';
+import TabButton from './components/TabButton';
 
 const DotsBG = styled.div`
   width: 100%;
@@ -364,6 +365,93 @@ const SwiperBullets = styled.div`
   z-index: 10;
 `;
 
+const CommunicationSection = styled.section`
+  padding: 101px 0 44px;
+  position: relative;
+  z-index: 0;
+  background-image: url('/assets/img/Noise bg_green.jpg') repeat;
+`;
+
+const CommunicationSectionContainer = styled.div`
+  max-width: 1135px;
+  margin: 0 auto;
+`;
+
+const CommunicationContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 415px;
+  position: relative;
+  z-index: 2;
+`;
+
+const CommunicationImgs = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: -23px;
+  top: 10px;
+  width: 624px;
+  margin-right: 96px;
+`;
+
+const CommunicationImg1 = styled.img`
+  max-width: 624px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+`;
+
+const CommunicationImg2 = styled.img`
+  max-width: 624px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+`;
+
+const Animation = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0px auto;
+  outline: none;
+`;
+
+const CommunicationText = styled.div`
+  width: 36%;
+  position: relative;
+`;
+
+const CommunicationButtons = styled.div``;
+
+const CommunicationH = styled.h5`
+  margin-bottom: 44px;
+  letter-spacing: .65px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #21272e;
+`;
+
+const TabButtons = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 64px;
+`;
+
+// const TabButton = styled.button`
+
+// `;
+
+const CommunicationNoiseBG = styled.div`
+  position: absolute;
+  width: 100%;
+  background: url('/assets/img/Noise bg_green.jpg') repeat;
+  height: 700px;
+  z-index: -20;
+`;
 
 
 function App() {
@@ -374,8 +462,9 @@ function App() {
 
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
-
   const [isActive, setIsActive] = useState(false);
+  const [activeComTab, setActiveComTab] = useState(0);
+
 
   return (
     <>
@@ -535,9 +624,6 @@ function App() {
                       <button onClick={() => swiper.slideNext()}>Slide to the next slide</button>
                     </SwiperNavigation>
 
-                    
-
-
                     {/* <div
                       id="previousButton"
                       className='previousSwiperButton'
@@ -565,7 +651,7 @@ function App() {
                       keyboard={{
                         enabled: true,
                       }}
-                      mousewheel={true}
+                      // mousewheel={true}
                       rewind={true}
                     >
                       <SwiperSlide>
@@ -592,6 +678,55 @@ function App() {
                 </SliderSectionContent>
               </SliderSectionContainer>
             </SliderSection>
+
+            <CommunicationSection>
+              <CommunicationSectionContainer>
+                <CommunicationContent>
+                  <CommunicationImgs>
+                    {activeComTab === 0 ? (
+                      <CommunicationImg1
+                        src='/assets/img/Before.png'
+                        alt='Communications before'
+                      />
+                    ) : (
+                      <Animation>
+                        <CommunicationImg2
+                          src='/assets/img/After.png'
+                          alt='Communications after'
+                        />
+                      </Animation>
+                    )}
+
+                  </CommunicationImgs>
+                  <CommunicationText>
+                    <CommunicationButtons>
+                      <CommunicationH>
+                        Communication 
+                      </CommunicationH>
+                      <TabButtons>
+                        <TabButton
+                          text='BEFORE'
+                          clickHandler={() => setActiveComTab(0)}
+                          isActive={activeComTab === 0}
+                        />
+                          
+                        <TabButton
+                          text='AFTER'
+                          clickHandler={() => setActiveComTab(1)}
+                          isActive={activeComTab === 1}                          
+                        />
+                          
+                      </TabButtons>
+
+                    </CommunicationButtons>
+
+                  </CommunicationText>
+
+
+                </CommunicationContent>
+              </CommunicationSectionContainer>
+            </CommunicationSection>
+            
 
 
           </Main>
